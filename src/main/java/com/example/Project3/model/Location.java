@@ -1,9 +1,12 @@
 package com.example.Project3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.security.core.parameters.P;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data // sets up all my setters, getters, To string classes
 @Entity
@@ -23,6 +26,10 @@ public class Location {
     @Column
     private String country;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "product_id" )
+    private Product product;
 
 
 }
