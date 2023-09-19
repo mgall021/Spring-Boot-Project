@@ -1,8 +1,14 @@
 package com.example.Project3.service;
 
+import com.example.Project3.exception.InformationNotFoundException;
+import com.example.Project3.model.Product;
 import com.example.Project3.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 public class ProductService {
     private ProductRepository productRepository;
@@ -13,11 +19,19 @@ public class ProductService {
     }
 
    // Get ALL
-    public String getProducts(){
-        return "get all products";
+    public List<Product> getProducts(){
+    System.out.println("service calling get All Products");
+    return productRepository.findAll();
     }
-    public String getProduct(@PathVariable Long productId){
-        return "getting the product with the id of" + productId;
+
+    public Optional<Product> getProduct(Long productId) {
+        System.out.println("service get Product");
+        Optional<Product> product = productRepository.findById(productId);
+        if (product.isPresent()) {
+            return product;
+        } else {
+            throw new InformationNotFoundException("Product with id" + productId + " not found");
+        }
     }
 
     public String createProduct(@RequestBody String body){
@@ -32,7 +46,7 @@ public class ProductService {
         return "deleting the product with the id of" + productId;
     }
 
-}
+
 
 
 
