@@ -26,6 +26,11 @@ public class ProductController {
     }
 
 //GETALL
+@GetMapping(path = "/products/")
+public List<Product> getProducts(){
+    System.out.println("calling get Product");
+    return productService.getProducts();
+}
 
 @GetMapping(path = "/products/{productId}")
     public String getProduct(@PathVariable Long productId){
