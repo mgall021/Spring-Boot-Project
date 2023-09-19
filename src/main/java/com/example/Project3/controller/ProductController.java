@@ -23,4 +23,8 @@ public class ProductController {
         return " updating the prooduct with the id of " + productId + body;
     }
 
+    public String deleteProduct(@PathVariable(value = "productId") Long productId){
+        return "deleting the product with the id of" + productId;
+    }
+
 }
