@@ -14,8 +14,9 @@ public class ProductController {
     public String getProduct(@PathVariable Long productId){
         return "getting the product with the id of" + productId;
     }
-
+@PostMapping("/products/")
     public String createProduct(@RequestBody String body){
         return "creating a product" + body;
     }
+
 }
