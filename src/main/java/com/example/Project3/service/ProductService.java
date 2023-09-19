@@ -5,11 +5,12 @@ import com.example.Project3.model.Product;
 import com.example.Project3.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ProductService {
     private ProductRepository productRepository;
 
@@ -23,7 +24,7 @@ public class ProductService {
     System.out.println("service calling get All Products");
     return productRepository.findAll();
     }
-
+// get Product with ID
     public Optional<Product> getProduct(Long productId) {
         System.out.println("service get Product");
         Optional<Product> product = productRepository.findById(productId);
