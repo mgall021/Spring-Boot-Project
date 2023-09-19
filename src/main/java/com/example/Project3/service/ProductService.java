@@ -1,5 +1,6 @@
 package com.example.Project3.service;
 
+import com.example.Project3.exception.InformationExistException;
 import com.example.Project3.exception.InformationNotFoundException;
 import com.example.Project3.model.Product;
 import com.example.Project3.repository.ProductRepository;
@@ -35,8 +36,16 @@ public class ProductService {
         }
     }
 
-    public String createProduct(@RequestBody String body){
-        return "creating a product" + body;
+
+    public Product createProduct(Product productObject) {
+        System.out.println("service calling to createProduct ");
+
+        Product product = productRepository.findByName(productObject.getName());
+        if (product != null) {
+            throw new InformationExistException("category with name " + product.getName() + " already exists");
+        } else {
+            return productRepository.save(productObject);
+        }
     }
 
     public  String updateProduct(@PathVariable(value = "productId") Long productId, @RequestBody String body){
