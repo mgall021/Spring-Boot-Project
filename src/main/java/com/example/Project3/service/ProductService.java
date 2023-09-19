@@ -48,9 +48,24 @@ public class ProductService {
         }
     }
 
-    public  String updateProduct(@PathVariable(value = "productId") Long productId, @RequestBody String body){
-        return " updating the prooduct with the id of " + productId + body;
+    public Product updateProduct(Long productId, Product productObject) {
+        System.out.println("service calling updateProduct ");
+        Optional<Product> product = productRepository.findById(productId);
+        if (product.isPresent()) {
+            if (productObject.getName().equals(product.get().getName())) {
+                System.out.println("Same product");
+                throw new InformationExistException("product " + product.get().getName() + " is already exists");
+            } else {
+                Product updateProduct = productRepository.findById(productId).get();
+                updateProduct.setName(productObject.getName());
+                updateProduct.setDescription(productObject.getDescription());
+                return productRepository.save(updateProduct);
+            }
+        } else {
+            throw new InformationNotFoundException("Product with id " + productId + " not found");
+        }
     }
+
 
     public String deleteProduct(@PathVariable(value = "productId") Long productId){
         return "deleting the product with the id of" + productId;
