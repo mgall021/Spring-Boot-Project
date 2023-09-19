@@ -1,11 +1,20 @@
 package com.example.Project3.controller;
 
+import com.example.Project3.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path ="/api")
 
 public class ProductController {
+    private ProductRepository productRepository;
+    @Autowired
+    public void setProductRepository(ProductRepository productRepository){
+        this.productRepository=productRepository;
+    }
+
+
     @GetMapping(path = "/products/")
     public String getProducts(){
         return "get all products";
