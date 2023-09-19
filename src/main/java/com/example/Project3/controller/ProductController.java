@@ -18,5 +18,8 @@ public class ProductController {
     public String createProduct(@RequestBody String body){
         return "creating a product" + body;
     }
+    public  String updateProduct(@PathVariable(value = "productId") Long productId, @RequestBody String body){
+        return " updating the prooduct with the id of " + productId + body;
+    }
 
 }
