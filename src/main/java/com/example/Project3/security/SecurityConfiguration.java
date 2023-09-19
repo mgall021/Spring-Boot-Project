@@ -11,6 +11,9 @@ import javax.persistence.Column;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration {
     @Bean
+    /**
+     * returns encripted password
+     */
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
