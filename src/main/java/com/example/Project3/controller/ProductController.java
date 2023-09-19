@@ -22,7 +22,7 @@ public class ProductController {
     public  String updateProduct(@PathVariable(value = "productId") Long productId, @RequestBody String body){
         return " updating the prooduct with the id of " + productId + body;
     }
-
+@DeleteMapping("/products/{productId}")
     public String deleteProduct(@PathVariable(value = "productId") Long productId){
         return "deleting the product with the id of" + productId;
     }
