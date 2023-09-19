@@ -26,10 +26,10 @@ public class Location {
     @Column
     private String country;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "product_id" )
-    private Product product;
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name = "product_id" )
+//    private Product product;
 
 
 }
