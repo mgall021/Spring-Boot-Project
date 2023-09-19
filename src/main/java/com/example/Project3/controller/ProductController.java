@@ -1,24 +1,32 @@
 package com.example.Project3.controller;
 
+import com.example.Project3.model.Product;
 import com.example.Project3.repository.ProductRepository;
+import com.example.Project3.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path ="/api")
 
 public class ProductController {
-    private ProductRepository productRepository;
-    @Autowired
-    public void setProductRepository(ProductRepository productRepository){
-        this.productRepository=productRepository;
+//    private ProductRepository productRepository;
+//    @Autowired
+//    public void setProductRepository(ProductRepository productRepository){
+//        this.productRepository=productRepository;
+//    }
+
+    private ProductService productService;
+
+    public void setProductService(ProductService productService){
+        this.productService=productService;
+
     }
 
+//GETALL
 
-    @GetMapping(path = "/products/")
-    public String getProducts(){
-        return "get all products";
-    }
 @GetMapping(path = "/products/{productId}")
     public String getProduct(@PathVariable Long productId){
         return "getting the product with the id of" + productId;

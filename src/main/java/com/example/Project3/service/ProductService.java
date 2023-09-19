@@ -67,10 +67,17 @@ public class ProductService {
     }
 
 
-    public String deleteProduct(@PathVariable(value = "productId") Long productId){
-        return "deleting the product with the id of" + productId;
-    }
+    public Optional<Product> deleteProduct(Long productId) {
+        System.out.println("service calling deleteProduct ");
+        Optional<Product> product = productRepository.findById(productId);
 
+        if (product.isPresent()) {
+            productRepository.deleteById(productId);
+            return product;
+        } else {
+            throw new InformationNotFoundException("product with id " + productId + " not found");
+        }
+    }
 
 
 
