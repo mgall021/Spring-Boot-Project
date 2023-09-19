@@ -6,4 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path ="/api")
 public class ProductController {
+
+    public String getProduct(){
+        return "get all products";
+    }
 }
