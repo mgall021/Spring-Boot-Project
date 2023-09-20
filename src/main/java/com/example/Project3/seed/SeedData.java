@@ -1,6 +1,7 @@
 package com.example.Project3.seed;
 
 import com.example.Project3.model.Customer;
+import com.example.Project3.model.Product;
 import com.example.Project3.repository.CustomerRepository;
 import com.example.Project3.repository.ProductRepository;
 import org.springframework.context.annotation.Lazy;
@@ -23,6 +24,15 @@ public class SeedData {
         customer.setCustomerName("marco");
         customer.setEmailAddress("mgall@gmail.com");
         customer.setPassword(passwordEncoder.encode("Jomamma"));
+        customerRepository.save(customer);
+
+        Product product = new Product();
+        product.setName("Apple");
+        product.setDescription("Macbook Pro");
+        product.setCustomer(customer);
+        productRepository.save(product);
+
+
     }
 
 }
