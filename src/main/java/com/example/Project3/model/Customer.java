@@ -9,6 +9,12 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Represents a customer in the application.
+ * This class models a customer entity in the system, storing information such as their name, email address,
+ * password (with write-only access for security), associated products, and locations. Additionally, it includes
+ * a one-to-one relationship with the customer's profile.
+ */
 @Data
 @Entity
 @Table(name = "customers")

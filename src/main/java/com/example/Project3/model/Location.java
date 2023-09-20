@@ -5,6 +5,12 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+/**
+ * Represents a location associated with a product and customer.
+ * This class models a location entity in the system, storing information such as the city, state, and country.
+ * It is associated with both a product and a customer. The relationship with the product is many-to-one,
+ * and the relationship with the customer is also many-to-one.
+ */
 
 @Data
 @Entity

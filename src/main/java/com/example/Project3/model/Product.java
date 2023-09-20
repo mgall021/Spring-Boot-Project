@@ -8,7 +8,11 @@ import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.util.List;
-
+/**
+ * Represents a product in the application.
+ * This class models a product entity in the system, storing information such as the product name,
+ * description, associated locations, and the customer who owns the product.
+ */
 @Data
 @Entity
 @Table(name = "product")
