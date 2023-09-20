@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path ="/api")
@@ -33,9 +34,13 @@ public List<Product> getProducts(){
 }
 
 @GetMapping(path = "/products/{productId}")
-    public String getProduct(@PathVariable Long productId){
-        return "getting the product with the id of" + productId;
+    public Optional<Product> getProduct(@PathVariable Long productId){
+    System.out.println("getting the product with the id of" + productId);
+    return productService.getProduct(productId);
     }
+
+
+
 @PostMapping("/products/")
     public String createProduct(@RequestBody String body){
         return "creating a product" + body;
