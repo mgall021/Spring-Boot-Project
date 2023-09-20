@@ -30,6 +30,9 @@ public class CustomerService {
     }
 
 
+    public Customer findCustomerByEmailAddress(String email) {
+        return customerRepository.findCustomerByEmailAddress(email);
+    }
 
 
 }
