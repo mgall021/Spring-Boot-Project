@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
+/**
+ * Service class for managing product-related operations.
+ * This class provides methods for retrieving, creating, updating, and deleting products. It also handles
+ * error handling for cases where products are not found or already exist. The service interacts with the
+ * ProductRepository for database operations.
+ */
 @Service
 public class ProductService {
     private ProductRepository productRepository;
@@ -20,12 +27,23 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-   // Get ALL
+
+    /**
+     * Get all products.
+     * @return A list of all products in the database.
+     */
     public List<Product> getProducts(){
     System.out.println("service calling get All Products");
     return productRepository.findAll();
     }
-// get Product with ID
+
+    /**
+     * Get a product by its ID.
+     * @param productId The ID of the product to retrieve.
+     * @return An Optional containing the product if found, or empty if not found.
+     * @throws InformationNotFoundException If the product with the specified ID is not found.
+     */
+
     public Optional<Product> getProduct(Long productId) {
         System.out.println("service get Product");
         Optional<Product> product = productRepository.findById(productId);
@@ -37,6 +55,12 @@ public class ProductService {
     }
 
 
+    /**
+     * Create a new product.
+     * @param productObject The Product object to create.
+     * @return The created product.
+     * @throws InformationExistException If a product with the same name already exists.
+     */
     public Product createProduct(Product productObject) {
         System.out.println("service calling to createProduct ");
 
@@ -48,6 +72,15 @@ public class ProductService {
         }
     }
 
+
+    /**
+     * Update a product by its ID.
+     * @param productId The ID of the product to update.
+     * @param productObject The updated Product object.
+     * @return The updated product.
+     * @throws InformationNotFoundException If the product with the specified ID is not found.
+     * @throws InformationExistException If a product with the same name already exists.
+     */
     public Product updateProduct(Long productId, Product productObject) {
         System.out.println("service calling updateProduct ");
         Optional<Product> product = productRepository.findById(productId);
@@ -67,6 +100,12 @@ public class ProductService {
     }
 
 
+    /**
+     * Delete a product by its ID.
+     * @param productId The ID of the product to delete.
+     * @return An Optional containing the deleted product if found, or empty if not found.
+     * @throws InformationNotFoundException If the product with the specified ID is not found.
+     */
     public Optional<Product> deleteProduct(Long productId) {
         System.out.println("service calling deleteProduct ");
         Optional<Product> product = productRepository.findById(productId);
