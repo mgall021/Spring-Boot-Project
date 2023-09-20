@@ -6,7 +6,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.HashSet;
-
+/**
+ * Custom UserDetails implementation representing customer details.
+ * This class implements the UserDetails interface to provide customer-specific authentication and authorization details.
+ * It encapsulates a Customer object and provides the necessary methods to retrieve user-related information for security purposes.
+ */
 public class MyCustomerDetails implements UserDetails {
     private Customer customer;
     public MyCustomerDetails(Customer customer){
