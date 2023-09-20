@@ -1,5 +1,6 @@
 package com.example.Project3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -25,5 +26,9 @@ public class Product {
     @OneToMany(mappedBy = "product", orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Location> locationsList;
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
 }
