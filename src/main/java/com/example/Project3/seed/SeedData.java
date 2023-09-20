@@ -1,5 +1,6 @@
 package com.example.Project3.seed;
 
+import com.example.Project3.model.Customer;
 import com.example.Project3.repository.CustomerRepository;
 import com.example.Project3.repository.ProductRepository;
 import org.springframework.context.annotation.Lazy;
@@ -17,6 +18,11 @@ public class SeedData {
         this.customerRepository = customerRepository;
         this.productRepository = productRepository;
     }
-
+    public void run(String... args) throws Exception {
+        Customer customer = new Customer();
+        customer.setCustomerName("marco");
+        customer.setEmailAddress("mgall@gmail.com");
+        customer.setPassword(passwordEncoder.encode("Jomamma"));
+    }
 
 }
