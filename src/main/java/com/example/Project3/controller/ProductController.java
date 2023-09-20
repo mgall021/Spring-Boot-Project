@@ -54,8 +54,9 @@ public List<Product> getProducts(){
         return productService.updateProduct(productId,productObject);
     }
 @DeleteMapping("/products/{productId}")
-    public String deleteProduct(@PathVariable(value = "productId") Long productId){
-        return "deleting the product with the id of" + productId;
+    public Optional<Product> deleteProduct(@PathVariable(value = "productId") Long productId){
+    System.out.println( "deleting the product with the id of");
+    return productService.deleteProduct(productId);
     }
 
 }
