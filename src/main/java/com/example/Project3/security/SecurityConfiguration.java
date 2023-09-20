@@ -24,6 +24,10 @@ public class SecurityConfiguration {
         this.myCustomerDetailsService=myCustomerDetailsService;
     }
 
-    public JwtRequestFilter
+    @Bean
+    public JwtRequestFilter authJwtRequestFilter() {
+        return new JwtRequestFilter();
+    }
+
 
 }
