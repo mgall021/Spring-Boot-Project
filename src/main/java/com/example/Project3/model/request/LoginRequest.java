@@ -1,14 +1,14 @@
 package com.example.Project3.model.request;
 
 public class LoginRequest {
-    private String email;
+    private String emailAddress;
     private String password;
 
-    public String getEmail() {
-        return email;
+    public String getEmailAddress(){
+        return emailAddress;
     }
 
-    public String getPassword() {
+    public String getPassword(){
         return password;
     }
 }
