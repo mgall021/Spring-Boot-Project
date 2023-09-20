@@ -1,5 +1,8 @@
 package com.example.Project3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +16,7 @@ public class CustomerProfile {
     private String firstName;
     @Column
     private String lastName;
-
-
+    @JsonIgnore
+    @OneToOne(mappedBy = "customerProfile")
+    private Customer customer;
 }
