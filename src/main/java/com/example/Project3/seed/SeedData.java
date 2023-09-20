@@ -7,6 +7,11 @@ import com.example.Project3.repository.ProductRepository;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * Seed data class for initializing sample data in the application.
+ * This class is responsible for seeding sample data into the database during application startup.
+ * It creates and saves instances of Customer and Product entities with sample data for testing and development purposes.
+ */
 public class SeedData {
     private final PasswordEncoder passwordEncoder;
 
