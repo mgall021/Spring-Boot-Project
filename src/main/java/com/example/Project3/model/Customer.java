@@ -32,4 +32,6 @@ public class Customer {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Location> locationList;
 
+    // user profile
+
 }
