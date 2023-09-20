@@ -33,5 +33,8 @@ public class Customer {
     private List<Location> locationList;
 
     // user profile
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private CustomerProfile customerProfile;
 
 }
