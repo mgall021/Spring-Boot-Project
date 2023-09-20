@@ -7,4 +7,12 @@ import javax.persistence.Table;
 @Table(name = "profiles")
 public class CustomerProfile {
 
+    private Long id;
+
+    private String firstName;
+
+
+    private String lastName;
+
+
 }
