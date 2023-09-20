@@ -13,6 +13,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import javax.persistence.Column;
 
+/**
+ * Configuration class for Spring Security.
+ * This class defines the security configuration for your application, including authentication, authorization,
+ * and security filter chains. It also specifies URL patterns, session management, and CSRF protection settings.
+ */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration {
@@ -36,6 +41,12 @@ public class SecurityConfiguration {
     }
 
 
+    /**
+     * Configure security filter chain.
+     * @param http The HttpSecurity object to configure.
+     * @return A SecurityFilterChain configured for your application.
+     * @throws Exception If configuration setup encounters an error.
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/auth/customers", "/auth/customers/login/", "/auth/customers/register/").permitAll()
@@ -49,6 +60,12 @@ public class SecurityConfiguration {
         return http.build();
     }
 
+    /**
+     * Bean definition for the AuthenticationManager.
+     * @param authConfig The AuthenticationConfiguration used to obtain the AuthenticationManager.
+     * @return An AuthenticationManager bean for authentication purposes.
+     * @throws Exception If obtaining the AuthenticationManager encounters an error.
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();
