@@ -13,12 +13,6 @@ import java.util.Optional;
 @RequestMapping(path ="/api")
 
 public class ProductController {
-//    private ProductRepository productRepository;
-//    @Autowired
-//    public void setProductRepository(ProductRepository productRepository){
-//        this.productRepository=productRepository;
-//    }
-
     private ProductService productService;
 
     public void setProductService(ProductService productService){
