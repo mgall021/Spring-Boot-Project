@@ -1,4 +1,9 @@
 package com.example.Project3.security;
 
-public class MyCustomerDetailsService {
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyCustomerDetailsService implements UserDetailsService {
+
 }
