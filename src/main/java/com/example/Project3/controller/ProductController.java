@@ -42,9 +42,12 @@ public List<Product> getProducts(){
 
 
 @PostMapping("/products/")
-    public String createProduct(@RequestBody String body){
-        return "creating a product" + body;
+    public Product createProduct(@RequestBody Product productObject){
+    System.out.println( "creating a product");
+    return productService.createProduct(productObject);
     }
+
+
     @PutMapping("/products/{productId}")
     public  String updateProduct(@PathVariable(value = "productId") Long productId, @RequestBody String body){
         return " updating the prooduct with the id of " + productId + body;
