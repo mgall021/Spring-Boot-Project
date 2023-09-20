@@ -49,8 +49,9 @@ public List<Product> getProducts(){
 
 
     @PutMapping("/products/{productId}")
-    public  String updateProduct(@PathVariable(value = "productId") Long productId, @RequestBody String body){
-        return " updating the prooduct with the id of " + productId + body;
+    public  Product updateProduct(@PathVariable(value = "productId") Long productId, @RequestBody Product productObject){
+        System.out.println(" updating the product with the id of ");
+        return productService.updateProduct(productId,productObject);
     }
 @DeleteMapping("/products/{productId}")
     public String deleteProduct(@PathVariable(value = "productId") Long productId){
