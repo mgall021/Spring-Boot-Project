@@ -1,6 +1,9 @@
 package com.example.Project3.model;
 
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.context.annotation.Lazy;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,7 +22,8 @@ public class Product {
     @Column
     private String description;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Location> locationsList;
 
 }
