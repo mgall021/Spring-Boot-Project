@@ -19,4 +19,9 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
+    private MyCustomerDetailsService myCustomerDetailsService;
+    public void setMyCustomerDetailsService(MyCustomerDetailsService myCustomerDetailsService){
+        this.myCustomerDetailsService=myCustomerDetailsService;
+    }
+
 }
