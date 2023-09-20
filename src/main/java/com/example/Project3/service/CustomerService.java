@@ -17,6 +17,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * Service class for managing customer-related operations.
+ * This class provides methods for creating customers, finding customers by email address,
+ * and handling customer login operations. It also includes validation for duplicate email addresses
+ * and uses JWT (JSON Web Token) for authentication and authorization.
+ */
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
@@ -36,7 +42,12 @@ public class CustomerService {
         this.myCustomerDetails = myCustomerDetails;
     }
 
-
+    /**
+     * Create a new customer.
+     * @param customerObject The Customer object to create.
+     * @return The created customer.
+     * @throws InformationExistException If a customer with the same email address already exists.
+     */
     public Customer createCustomer(Customer customerObject) {
         System.out.println("service calling create Customerr ");
         if (!customerRepository.existsByEmailAddress(customerObject.getEmailAddress())) {
@@ -49,9 +60,20 @@ public class CustomerService {
     }
 
 
+    /**
+     * Find a customer by email address.
+     * @param email The email address of the customer to find.
+     * @return The customer with the specified email address, or null if not found.
+     */
     public Customer findCustomerByEmailAddress(String email) {
         return customerRepository.findCustomerByEmailAddress(email);
     }
+
+    /**
+     * Authenticate and log in a customer.
+     * @param loginRequest The LoginRequest containing email and password for authentication.
+     * @return An Optional containing the JWT token if login is successful, or empty if authentication fails.
+     */
     public Optional<String> loginCustomer(LoginRequest loginRequest) {
         UsernamePasswordAuthenticationToken authenticationToken = new
                 UsernamePasswordAuthenticationToken(loginRequest.getEmailAddress(), loginRequest.getPassword());
