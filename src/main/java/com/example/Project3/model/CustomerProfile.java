@@ -2,9 +2,10 @@ package com.example.Project3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import javax.persistence.*;
-
+@Data
 @Entity
 @Table(name = "profiles")
 public class CustomerProfile {
