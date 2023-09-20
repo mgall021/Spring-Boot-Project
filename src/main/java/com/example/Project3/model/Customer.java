@@ -28,5 +28,8 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Product> productList;
+    @OneToMany(mappedBy = "customer")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Location> locationList;
 
 }
