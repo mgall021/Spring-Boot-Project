@@ -31,5 +31,9 @@ public class Location {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
 }
