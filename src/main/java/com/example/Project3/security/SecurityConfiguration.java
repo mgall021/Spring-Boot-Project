@@ -2,6 +2,7 @@ package com.example.Project3.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -49,16 +50,26 @@ public class SecurityConfiguration {
      */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/auth/customers", "/auth/customers/login/", "/auth/customers/register/").permitAll()
+        http
+                .authorizeRequests()
+                .antMatchers("/auth/customers", "/auth/customers/login/", "/auth/customers/register/").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/products/").permitAll() // Allow POST requests to this endpoint
+                .antMatchers(HttpMethod.GET, "/api/products/**").permitAll()// Require authentication for GET
+                .antMatchers(HttpMethod.PUT, "/api/products/**").permitAll() // Require ADMIN role for PUT
+                .antMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN") // Require ADMIN role for DELETE
                 .anyRequest().authenticated()
-                .and().sessionManagement()
+                .and()
+                .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().csrf().disable()
+                .and()
+                .csrf().disable()
                 .headers().frameOptions().disable();
+
         http.addFilterBefore(authJwtRequestFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
+//           .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
     /**
      * Bean definition for the AuthenticationManager.

@@ -11,8 +11,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path ="/api")
-
 public class ProductController {
+    @Autowired
     private ProductService productService;
 
     public void setProductService(ProductService productService){
@@ -66,10 +66,11 @@ public List<Product> getProducts(){
      * @return The updated Product object with the specified unique identifier.
      */
     @PutMapping("/products/{productId}")
-    public  Product updateProduct(@PathVariable(value = "productId") Long productId, @RequestBody Product productObject){
-        System.out.println(" updating the product with the id of ");
-        return productService.updateProduct(productId,productObject);
+    public Product updateProduct(@PathVariable(value = "productId") Long productId, @RequestBody Product productObject){
+        System.out.println("Updating the product with the id of " + productId);
+        return productService.updateProduct(productId, productObject);
     }
+
     /**
      * Delete a product by its unique identifier.
      * This endpoint deletes a specific product based on its unique identifier.
