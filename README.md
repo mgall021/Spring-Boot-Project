@@ -16,6 +16,7 @@ Welcome to my E-commerce marvel, forged in Java and Spring Boot! This petite yet
 8. **Customer Details**: As an administrator, I want to view detailed information about a customer, including their name and email address.
 
 ### Data Model
+![Picture of ERD model](https://raw.githubusercontent.com/mgall021/Spring-Boot-Project/fc6e4e926a3f4d60f9533866ee269c462116ca69/Screenshot%202023-09-20%20at%204.44.58%20AM.png)
 
 - A Customer can have one CustomerProfile, which contains information like their first name and last name.
 - A Customer can have multiple Product entries, indicating the products associated with that customer.
