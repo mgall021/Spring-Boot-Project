@@ -51,6 +51,6 @@ Welcome to my E-commerce marvel, forged in Java and Spring Boot! This petite yet
 ## Acknowledgments
 
 Special thanks to my fellow classmates for helping me:
-- Kairo
+- Kairo - https://www.linkedin.com/in/kairo-evans/
 - Julian
 - Rick - https://www.linkedin.com/in/rickmaya/
